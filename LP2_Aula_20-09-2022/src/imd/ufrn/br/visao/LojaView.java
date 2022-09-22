@@ -1,4 +1,9 @@
-package imd.ufrn.br.dominio;
+package imd.ufrn.br.visao;
+
+import imd.ufrn.br.dominio.Deposito;
+import imd.ufrn.br.dominio.Produto;
+import imd.ufrn.br.dominio.ProdutoDuravel;
+import imd.ufrn.br.dominio.ProdutoNaoDuravel;
 
 import java.util.Date;
 
