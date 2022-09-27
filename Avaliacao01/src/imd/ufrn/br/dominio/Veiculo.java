@@ -7,6 +7,11 @@ public class Veiculo {
     private String placa;
     private double quilometragem;
     private double valorDoAluguel;
+
+    public double getQuilometragemParatrocaDeOleo() {
+        return quilometragemParatrocaDeOleo;
+    }
+
     private double quilometragemParatrocaDeOleo;
 
     private boolean estaAlugado;
