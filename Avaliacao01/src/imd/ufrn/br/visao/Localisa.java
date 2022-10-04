@@ -3,6 +3,7 @@ package imd.ufrn.br.visao;
 import imd.ufrn.br.dominio.Carro;
 import imd.ufrn.br.dominio.Moto;
 import imd.ufrn.br.dominio.Repositorio;
+import imd.ufrn.br.dominio.Veiculo;
 
 public class Localisa {
     public static void main(String[] args) {
@@ -21,6 +22,7 @@ public class Localisa {
         Moto Suzuki = new Moto("Suzuki", "CCCCCCC", 5000, 1350, "Elétrica", 620, false);
 
         //Adicionar veiculos
+        //a)
         repositorio.adicionarVeiculo(Fiat);
         repositorio.adicionarVeiculo(Honda);
         repositorio.adicionarVeiculo(Chevrolet);
@@ -29,13 +31,23 @@ public class Localisa {
         repositorio.adicionarVeiculo(Suzuki);
 
         //Listar todos os veículos
-        repositorio.listarVeiculosCadastrados();
+        //b) Parte 1
+        for (Veiculo v: repositorio.getListaDeVeiculos()) {
+            System.out.println("Listar todos os veículos");
+            System.out.println(v.toString());
+        }
 
         //c) Exibir os veículos alugados e quanto a LocaLisa receberá pelo aluguel desses
         //veículos; [2,0]
 
+            //Exibir alugados
+            System.out.println("Lista de alugados");
+            for ( Veiculo v : repositorio.listarVeiculosAlugados()){
+                System.out.println(v.toString());
+            }
 
-        repositorio.exibirVeiculosAlugados();
+            //Quanto a LocaLisa vai receber
+            System.out.println("Faturamento: R$" + repositorio.faturamento());
 
         //d) Exibir os veículos disponíveis para aluguel e seus respectivos valores de aluguel,
         //assim como o valor de aluguel mais alto e mais baixo entre os disponíveis; [2,5]

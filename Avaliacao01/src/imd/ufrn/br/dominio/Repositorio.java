@@ -6,10 +6,10 @@ import java.util.List;
 import static java.lang.Math.ceil;
 
 public class Repositorio {
-    private List<Veiculo> listaDeVeiculos;
+    private ArrayList<Veiculo> listaDeVeiculos;
 
     public Repositorio() {
-        this.listaDeVeiculos = new ArrayList<Veiculo>();
+        listaDeVeiculos = new ArrayList<Veiculo>();
     }
 
     //Adicionar veiculo
@@ -18,31 +18,48 @@ public class Repositorio {
     }
 
     // Listar todos os listars cadastrados
-    public void listarVeiculosCadastrados(){
-        for (Veiculo v: listaDeVeiculos)
-            System.out.println(v.getMarca());
+    public ArrayList<Veiculo> getListaDeVeiculos(){
+        return listaDeVeiculos;
     }
 
     // Marca com maior número de carros na LocaLisa
     public String marcaComMaiorNumeroDeCarros(){
         return "";
     }
-    // Exibir veículos alugados e quanto a LocaLisa vai faturar
-    public void exibirVeiculosAlugados(){
-        System.out.println("Veiculos Alugados");
 
-        double totalDeAluguel = 0;
+    // Exibir veículos alugados
+    public ArrayList<Veiculo> alugados(boolean veiculosAlugados){
+        ArrayList<Veiculo> alugados = new ArrayList<>();
+
+        for (Veiculo v: listaDeVeiculos) {
+            //Método para saber se um veículo está alugado
+            if (veiculosAlugados) {
+                if (v.estaAlugado()) {
+                    alugados.add(v);
+                }
+            }
+            else if (!veiculosAlugados) {
+                if (!v.estaAlugado())
+                    alugados.add(v);
+            }
+        }
+        return alugados;
+    }
+
+    // Retornar faturamento da LocaLisa
+    public double faturamento(){
+        double faturamento = 0;
+
         for (Veiculo v: listaDeVeiculos) {
             //Método para saber se um veículo está alugado
             if (v.estaAlugado()){
-                System.out.println("______________________________\n");
-                System.out.println(v.toString());
                 // A soma de todos os aluguéis
-                totalDeAluguel += v.getValorDoAluguel();
+                faturamento += v.getValorDoAluguel();
             }
         }
-        System.out.println("\n\nTotal a faturar com aluguéis: R$ " + totalDeAluguel);
+        return faturamento;
     }
+
 
     // Exibir veículos disponíveis para aluguel e seus valores(?)
         // concatenando o maior e o menor valor
@@ -84,7 +101,6 @@ public class Repositorio {
         double litrosDeCarro = 3.5;
         double quantidadeDeLitrosDeOleo = 0, totalDeTrocas;
         ArrayList<Veiculo> trocaramOleo = new ArrayList<Veiculo>();
-
 
         for (Veiculo v: listaDeVeiculos
              ) {
