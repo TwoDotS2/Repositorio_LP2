@@ -4,11 +4,7 @@ import br.ufrn.imd.domain.Pessoa;
 
 import java.util.List;
 
-public class Conta {
-
-    public enum localInstrument {
-        MANU, DICT, QRDN, QRES, INIC;
-    }
+public abstract class Conta implements ContaInterface{
 
     private String numConta;
     private String senha;
@@ -17,27 +13,22 @@ public class Conta {
     private List<Cartao> cartoes;
 
     //Construtores
-    public Conta() {}
 
-    //Métodos
-    //Pagamentos
-     public String realizarPagamento(localInstrument local, String senha){
+     public String realizarPagamento(String senha){
         String code = "";
-
         if(senha == this.senha){
-
         }
-
           return code;
      }
-
     //Saque
-    public void sacarDinheiro(double valorDoSaque, String senha){
-
+    public void sacar(double valor){
+        saldo -= valor;
     }
 
     //Consultar saldo
-    //get saldo
+    public void depositar(double valor){
+        saldo += valor;
+    }
     
 
     //Getters e Setters
@@ -72,4 +63,6 @@ public class Conta {
     public void setCartoes(List<Cartao> cartoes) {
         this.cartoes = cartoes;
     }
+
+    public abstract void imprimeExtrato();
 }
